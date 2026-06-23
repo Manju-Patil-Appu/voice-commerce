@@ -1,0 +1,125 @@
+@import url("https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;700&family=Sora:wght@400;600;700&display=swap");
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --bg-1: #071018;
+  --bg-2: #0f2534;
+  --bg-3: #1b3a4a;
+}
+
+body {
+  margin: 0;
+  font-family: "Space Grotesk", "Segoe UI", sans-serif;
+  background: radial-gradient(circle at 12% 0%, #145374 0%, transparent 34%),
+    radial-gradient(circle at 85% 20%, #3c6e71 0%, transparent 30%),
+    linear-gradient(120deg, var(--bg-1), var(--bg-2) 50%, var(--bg-3));
+  min-height: 100vh;
+}
+
+.brand-heading {
+  font-family: "Sora", "Space Grotesk", sans-serif;
+}
+
+.page-bg {
+  background-image: linear-gradient(rgba(255, 255, 255, 0.02) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(255, 255, 255, 0.02) 1px, transparent 1px);
+  background-size: 24px 24px;
+}
+
+.glass-panel {
+  border: 1px solid rgba(255, 255, 255, 0.15);
+  border-radius: 1rem;
+  background: rgba(5, 15, 22, 0.75);
+  backdrop-filter: blur(8px);
+  box-shadow: 0 10px 35px rgba(0, 0, 0, 0.35);
+}
+
+.pill {
+  border: 1px solid rgba(134, 239, 255, 0.35);
+  background: rgba(14, 116, 144, 0.25);
+  padding: 0.4rem 0.7rem;
+  border-radius: 9999px;
+  font-size: 0.78rem;
+}
+
+.input-chip {
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  border-radius: 0.7rem;
+  background: rgba(15, 23, 42, 0.6);
+  color: #e2e8f0;
+  padding: 0.58rem 0.7rem;
+  font-size: 0.9rem;
+}
+
+.input-chip:focus {
+  outline: none;
+  border-color: rgba(34, 211, 238, 0.8);
+}
+
+.btn-primary,
+.btn-secondary,
+.btn-accent {
+  border-radius: 0.6rem;
+  padding: 0.48rem 0.4rem;
+  font-size: 0.76rem;
+  transition: transform 0.18s ease, opacity 0.18s ease;
+}
+
+.btn-primary {
+  background: linear-gradient(90deg, #0ea5e9, #06b6d4);
+  color: #042028;
+  font-weight: 700;
+}
+
+.btn-secondary {
+  background: rgba(250, 204, 21, 0.15);
+  border: 1px solid rgba(250, 204, 21, 0.45);
+  color: #fde68a;
+}
+
+.btn-accent {
+  background: rgba(16, 185, 129, 0.16);
+  border: 1px solid rgba(16, 185, 129, 0.42);
+  color: #a7f3d0;
+}
+
+.btn-primary:hover,
+.btn-secondary:hover,
+.btn-accent:hover {
+  transform: translateY(-1px);
+  opacity: 0.95;
+}
+
+.card-fade {
+  animation: cardIn 0.36s ease both;
+}
+
+.nav-link {
+  border: 1px solid rgba(255, 255, 255, 0.16);
+  border-radius: 0.7rem;
+  background: rgba(15, 23, 42, 0.55);
+  color: #dbeafe;
+  padding: 0.5rem 0.8rem;
+  font-size: 0.82rem;
+  text-decoration: none;
+}
+
+.nav-link-active {
+  border-color: rgba(34, 211, 238, 0.85);
+  background: rgba(6, 182, 212, 0.2);
+  color: #cffafe;
+}
+
+@keyframes cardIn {
+  from {
+    transform: translateY(6px);
+    opacity: 0;
+  }
+  to {
+    transform: translateY(0);
+    opacity: 1;
+  }
+}

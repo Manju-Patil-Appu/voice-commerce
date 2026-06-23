@@ -1,0 +1,37 @@
+﻿# Python
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+.env
+.env.override
+.env.local
+venv/
+env/
+ENV/
+.venv
+*.log
+*.wav
+*.mp3
+
+# PostgreSQL
+*.db
+*.sqlite
+
+# Node
+node_modules/
+dist/
+build/
+.DS_Store
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+
+# IDE
+.vscode/
+.idea/
+*.swp
+*.swo
+
+# Others
+temp_verify_2.wav
