@@ -5,7 +5,9 @@ psycopg[binary]
 python-jose
 passlib[bcrypt]
 pydantic-settings
-resemblyzer
+resemblyzer==0.1.4
+webrtcvad==2.0.10
+setuptools==68.2.2
 numpy
 soundfile
 openai
