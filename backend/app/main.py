@@ -36,6 +36,14 @@ app.add_middleware(
     allow_headers=["*"],
 )
 
+@app.get("/")
+def root():
+    return {
+        "status": "ok",
+        "service": "Voice Commerce API",
+        "docs": "/docs"
+    }
+
 app.include_router(auth.router, prefix="/auth", tags=["auth"])
 app.include_router(products.router, prefix="/products", tags=["products"])
 app.include_router(cart.router, prefix="/cart", tags=["cart"])
@@ -47,3 +55,6 @@ app.include_router(intent.router, tags=["intent"])
 
 if DATASETS_DIR.exists():
     app.mount("/datasets", StaticFiles(directory=str(DATASETS_DIR)), name="datasets")
+
+
+
