@@ -14,11 +14,12 @@ openai
 python-multipart
 requests
 redis
-fasttext
+#fasttext
 sentence-transformers
 python-dotenv
 langdetect
 simple_image_download
 pillow
 email-validator
+dnspython
 

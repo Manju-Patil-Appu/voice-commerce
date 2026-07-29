@@ -24,6 +24,21 @@ class Settings(BaseSettings):
 
     REDIS_URL: str | None = None
 
+    SMTP_HOST: str | None = None
+    SMTP_PORT: int | None = None
+    SMTP_USERNAME: str | None = None
+    SMTP_PASSWORD: str | None = None
+    SMTP_FROM: str | None = None
+    SMTP_TLS: bool | None = None
+    EMAIL_VERIFICATION_OTP_MINUTES: int = 10
+    AUTH_RATE_LIMIT_WINDOW_SECONDS: int = 900
+    AUTH_LOGIN_RATE_LIMIT: int = 5
+    AUTH_REGISTER_RATE_LIMIT: int = 3
+    AUTH_VERIFY_OTP_RATE_LIMIT: int = 5
+    AUTH_RESEND_OTP_RATE_LIMIT: int = 3
+    AUTH_FORGOT_PASSWORD_RATE_LIMIT: int = 3
+    AUTH_RESET_PASSWORD_RATE_LIMIT: int = 5
+
     FASTTEXT_LID_MODEL_PATH: str = "models/lid.176.bin"
 
     VOICE_MIN_DURATION_SEC: float = 0.7

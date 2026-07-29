@@ -119,13 +119,22 @@ function AuthView({ onAuth }) {
   const [mode, setMode] = useState("login");
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
+  const [otp, setOtp] = useState("");
   const [error, setError] = useState("");
+  const [message, setMessage] = useState("");
 
   async function submit() {
     setError("");
+    setMessage("");
     try {
       if (mode === "register") {
         await apiPost("/auth/register", { email, password });
+        setMode("verify");
+        setMessage("Verification code sent to your email.");
+        return;
+      }
+      if (mode === "verify") {
+        await apiPost("/auth/verify-email", { email, otp });
       }
       const login = await apiPost("/auth/login", { email, password });
       setAuthToken(login.access_token);
@@ -146,8 +155,14 @@ function AuthView({ onAuth }) {
         </div>
         <input className="input-chip mt-4 w-full" placeholder="Email" value={email} onChange={(e) => setEmail(e.target.value)} />
         <input className="input-chip mt-2 w-full" placeholder="Password" type="password" value={password} onChange={(e) => setPassword(e.target.value)} />
+        {mode === "verify" ? (
+          <input className="input-chip mt-2 w-full" placeholder="6-digit code" value={otp} onChange={(e) => setOtp(e.target.value)} />
+        ) : null}
+        {message ? <p className="mt-2 text-sm text-emerald-300">{message}</p> : null}
         {error ? <p className="mt-2 text-sm text-rose-300">{error}</p> : null}
-        <button className="btn-primary mt-4 w-full" onClick={() => void submit()}>{mode === "login" ? "Login" : "Register + Login"}</button>
+        <button className="btn-primary mt-4 w-full" onClick={() => void submit()}>
+          {mode === "login" ? "Login" : mode === "register" ? "Register" : "Verify + Login"}
+        </button>
       </div>
     </div>
   );

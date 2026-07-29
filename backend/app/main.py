@@ -25,6 +25,11 @@ def ensure_product_image_column() -> None:
             conn.execute(text("ALTER TABLE orders ADD COLUMN IF NOT EXISTS payment JSON"))
             conn.execute(text("ALTER TABLE orders ADD COLUMN IF NOT EXISTS delivery JSON"))
             conn.execute(text("ALTER TABLE orders ADD COLUMN IF NOT EXISTS invoice_text VARCHAR"))
+            conn.execute(text("ALTER TABLE users ADD COLUMN IF NOT EXISTS is_verified BOOLEAN NOT NULL DEFAULT FALSE"))
+            conn.execute(text("ALTER TABLE users ADD COLUMN IF NOT EXISTS verification_otp VARCHAR"))
+            conn.execute(text("ALTER TABLE users ADD COLUMN IF NOT EXISTS verification_expiry TIMESTAMPTZ"))
+            conn.execute(text("ALTER TABLE users ADD COLUMN IF NOT EXISTS password_reset_otp VARCHAR"))
+            conn.execute(text("ALTER TABLE users ADD COLUMN IF NOT EXISTS password_reset_expiry TIMESTAMPTZ"))
     except Exception:
         pass
 
@@ -55,6 +60,4 @@ app.include_router(intent.router, tags=["intent"])
 
 if DATASETS_DIR.exists():
     app.mount("/datasets", StaticFiles(directory=str(DATASETS_DIR)), name="datasets")
-
-
 
