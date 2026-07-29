@@ -3,7 +3,6 @@ uvicorn
 sqlalchemy
 psycopg[binary]
 python-jose
-passlib[bcrypt]
 pydantic-settings
 resemblyzer==0.1.4
 webrtcvad==2.0.10
@@ -22,4 +21,5 @@ simple_image_download
 pillow
 email-validator
 dnspython
-
+bcrypt==4.0.1
+passlib[bcrypt]==1.7.4
