@@ -1,4 +1,7 @@
+import socket
+
 from fastapi import FastAPI
+
 from fastapi.middleware.cors import CORSMiddleware
 from fastapi.staticfiles import StaticFiles
 from pathlib import Path
@@ -48,6 +51,20 @@ def root():
         "service": "Voice Commerce API",
         "docs": "/docs"
     }
+
+@app.get("/smtp-test")
+def smtp_test():
+    try:
+        socket.create_connection(("smtp.gmail.com", 587), timeout=10)
+        return {
+            "status": "success",
+            "message": "Successfully connected to Gmail SMTP."
+        }
+    except Exception as e:
+        return {
+            "status": "failed",
+            "error": str(e)
+        }
 
 app.include_router(auth.router, prefix="/auth", tags=["auth"])
 app.include_router(products.router, prefix="/products", tags=["products"])
