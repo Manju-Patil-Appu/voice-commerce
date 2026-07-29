@@ -10,6 +10,8 @@ class Settings(BaseSettings):
     ACCESS_TOKEN_EXPIRE_MINUTES: int = 60
     CORS_ORIGINS: list[str] = ["http://localhost:5173"]
 
+    RESEND_API_KEY: str | None = None
+
     VOICE_AUTH_THRESHOLD: float = 0.80
 
     OPENAI_API_KEY: str | None = None
